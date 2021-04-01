@@ -3,8 +3,7 @@ package org.example.linesimplebeacon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.kataring.linesimplebeacon.BeaconSettings
-import com.kataring.linesimplebeacon.LineBeacon
+import com.kataring.linesimplebeacon.*
 
 class MainActivity : AppCompatActivity() {
     private val LINE_BEACON_HWID = "<user-line-beacon-hwid>"

@@ -1,4 +1,6 @@
-# LINE Simple Beacon Kotlin Sample Application
+# LINE Simple Beacon for Kotlin
+
+Sample Application for LINE Simple Beacon
 
 ### How to use
 
@@ -6,7 +8,12 @@
 val LINE_BEACON_HWID = "<your_beacon_hwid>"
 val mSettings = BeaconSettings()
 val mBeacon = LineBeacon(this, mSettings)
+
+// start
 mBeacon.createAdvertiseData(LINE_BEACON_HWID, "1234")
+
+// stop
+mBeacon.stopAdvertising()
 ```
 
 ### LICENSE

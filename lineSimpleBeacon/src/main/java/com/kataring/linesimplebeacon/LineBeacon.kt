@@ -1,18 +1,31 @@
 package com.kataring.linesimplebeacon
 
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
 import android.bluetooth.le.*
+import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
+import androidx.core.content.ContextCompat.getSystemService
 
-class LineBeacon(beaconSettings: BeaconSettings?) {
+class LineBeacon(context: Context, beaconSettings: BeaconSettings?) {
     private lateinit var bleAdapter: BluetoothAdapter
     private lateinit var bleLeAdvertiser: BluetoothLeAdvertiser
+    private lateinit var bleManager: BluetoothManager
+
     private val LINE_BEACON_SERVICE_UUID = "0000fe6f-0000-1000-8000-00805f9b34fb"
     private val LINE_BEACON_ADVERTISE_DATA_HEX_STRING = "02%s7f%s"
+
     private var isAdvertising = false
     private var mBeaconSettings: BeaconSettings? = beaconSettings
+
     private val TAG = "LineBeacon"
+
+    init {
+        bleManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        bleAdapter = bleManager.getAdapter()
+    }
+
     private var AdvertiseCallback = object : AdvertiseCallback() {
         override fun onStartSuccess(settingsInEffect: AdvertiseSettings) {
             super.onStartSuccess(settingsInEffect)

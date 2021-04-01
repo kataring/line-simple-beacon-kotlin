@@ -6,18 +6,18 @@ import com.kataring.linesimplebeacon.*
 
 class MainActivity : AppCompatActivity() {
     private val LINE_BEACON_HWID = "<your_beacon_hwid>"
-    private lateinit var mbeacon: LineBeacon
+    private lateinit var mBeacon: LineBeacon
     private val mSettings = BeaconSettings()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mbeacon = LineBeacon(this, mSettings)
+        mBeacon = LineBeacon(this, mSettings)
         setContentView(R.layout.activity_main)
     }
 
     override fun onResume() {
         super.onResume()
-        mbeacon.createAdvertiseData(LINE_BEACON_HWID, "1234")
+        mBeacon.createAdvertiseData(LINE_BEACON_HWID, "1234")
     }
 
 }
